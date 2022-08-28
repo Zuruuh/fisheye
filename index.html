@@ -3,22 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link href="/src/styles/app.scss" rel="stylesheet" type="text/scss" />
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-      rel="stylesheet"
-    />
-
+    <link href="/src/styles/app.scss" rel="stylesheet" type="text/css" />
     <script type="module" src="/src/scripts/pages/index.ts"></script>
-
     <title>Fisheye</title>
   </head>
   <body>
     <header>
-      <img src="src/assets/images/logo.png" class="logo" alt="Fisheye logo" />
+      <a href="./">
+        <img
+          src="/src/assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
+      </a>
       <h1>Nos photographes</h1>
     </header>
-    <main id="app"></main>
+    <main id="app">
+      <noscript>
+        Merci d'activer l'interpréteur javascript de votre navigateur
+      </noscript>
+    </main>
   </body>
 </html>

@@ -1,13 +1,13 @@
-import { Model } from '../models/Model';
+import { Store } from '../utils/Store';
 
-export abstract class Provider<T extends Model> {
+export abstract class Provider<T extends { id: number }> {
   protected abstract getCacheKey(): string;
   protected abstract load(): Promise<T[]>;
 
   public async all() {
     await this.ensureCacheIsLoaded();
 
-    return JSON.parse(String(localStorage.getItem(this.getCacheKey()))) as T[];
+    return Store.get<T[]>(this.getCacheKey());
   }
 
   public async get(id: number): Promise<T | null> {
@@ -15,15 +15,14 @@ export abstract class Provider<T extends Model> {
   }
 
   protected cacheLoaded(): boolean {
-    return Boolean(localStorage.getItem(this.getCacheKey()));
+    return Store.has(this.getCacheKey());
   }
 
   protected async ensureCacheIsLoaded(): Promise<void> {
-    if (localStorage.getItem(this.getCacheKey())) {
+    if (Store.has(this.getCacheKey())) {
       return;
     }
 
-    const data = await this.load();
-    localStorage.setItem(this.getCacheKey(), JSON.stringify(data));
+    Store.set(this.getCacheKey(), await this.load());
   }
 }

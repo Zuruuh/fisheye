@@ -1,6 +1,5 @@
 import { Provider } from './Provider';
 import { Photographer } from '../models/Photographer';
-import { PhotographersLoader } from '../loaders/photograph/PhotographersLoader';
 
 export class PhotographersProvider extends Provider<Photographer> {
   protected getCacheKey() {
@@ -8,6 +7,8 @@ export class PhotographersProvider extends Provider<Photographer> {
   }
 
   public async load() {
-    return new PhotographersLoader().load();
+    return (await (
+      await fetch('/data/photographers.json')
+    ).json()) as Photographer[];
   }
 }

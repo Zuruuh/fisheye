@@ -7,7 +7,10 @@ const PostCSSConfig = {
   plugins: [
     require('autoprefixer')(),
     require('@fullhuman/postcss-purgecss')({
-      content: ['./*.html'],
+      content: ['./*.html', './src/**/*.js'],
+      safelist: {
+        greedy: [/^photograph.*/],
+      },
     }),
   ],
 };

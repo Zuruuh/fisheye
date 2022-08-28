@@ -1,6 +1,5 @@
 import { Provider } from './Provider';
 import { Media } from '../models/Media';
-import { MediasLoader } from '../loaders/medias/MediasLoader';
 import { Photographer } from '../models/Photographer';
 
 export class MediaProvider extends Provider<Media> {
@@ -9,14 +8,14 @@ export class MediaProvider extends Provider<Media> {
   }
 
   public async load() {
-    return new MediasLoader().load();
+    return (await (await fetch('/data/medias.json')).json()) as Media[];
   }
 
   public async getAllMediasForPhotograph(
     photographer: Photographer
   ): Promise<Media[]> {
     return (await this.all()).filter(
-      (media) => media.photographer === photographer
+      (media) => media.photographerId === photographer.id
     );
   }
 }

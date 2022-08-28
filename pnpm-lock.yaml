@@ -11,9 +11,11 @@ specifiers:
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.2.1
   fast-glob: ^3.2.11
+  normalize-css: ^2.3.1
   postcss: ^8.4.14
   postcss-load-config: ^4.0.1
   prettier: ^2.7.1
+  reset-css: ^5.0.1
   sass: ^1.53.0
   stylelint: ^14.9.1
   stylelint-config-prettier: ^9.0.3
@@ -33,9 +35,11 @@ devDependencies:
   eslint-config-prettier: 8.5.0_eslint@8.19.0
   eslint-plugin-prettier: 4.2.1_7uxdfn2xinezdgvmbammh6ev5i
   fast-glob: 3.2.11
+  normalize-css: 2.3.1
   postcss: 8.4.14
   postcss-load-config: 4.0.1_postcss@8.4.14
   prettier: 2.7.1
+  reset-css: 5.0.1
   sass: 1.53.0
   stylelint: 14.9.1
   stylelint-config-prettier: 9.0.3_stylelint@14.9.1
@@ -1234,6 +1238,10 @@ packages:
     resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
     dev: true
 
+  /insert-css/0.0.0:
+    resolution: {integrity: sha512-PwixL1rVtKkM1gz43tEHwZ2sUOYmWB5zk/9YiEmOxERqjfIkkMY4jwrl3v3e9NLzblEdkBuMLiTLm/0sHMx4qA==}
+    dev: true
+
   /is-arrayish/0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
     dev: true
@@ -1452,6 +1460,12 @@ packages:
 
   /node-releases/2.0.6:
     resolution: {integrity: sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==}
+    dev: true
+
+  /normalize-css/2.3.1:
+    resolution: {integrity: sha512-70Lnkke3P+8ehu56S0M0yoUTgTve/rCrEncjdgPmKER/TLZMRa30rFLW7Yv3iGZldmGV4bGevGW47VOfZJbGyw==}
+    dependencies:
+      insert-css: 0.0.0
     dev: true
 
   /normalize-package-data/2.5.0:
@@ -1718,6 +1732,10 @@ packages:
   /require-from-string/2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /reset-css/5.0.1:
+    resolution: {integrity: sha512-VyuJdNFfp5x/W6e5wauJM59C02Vs0P22sxzZGhQMPaqu/NGTeFxlBFOOw3eq9vQd19gIDdZp7zi89ylyKOJ33Q==}
     dev: true
 
   /resolve-from/4.0.0:
