@@ -1,8 +1,8 @@
 import { Store } from '../utils/Store';
+import { DataLoader } from '../loaders/DataLoader';
 
 export abstract class Provider<T extends { id: number }> {
-  protected abstract getCacheKey(): string;
-  protected abstract load(): Promise<T[]>;
+  public abstract getCacheKey(): string;
 
   public async all() {
     await this.ensureCacheIsLoaded();
@@ -23,6 +23,6 @@ export abstract class Provider<T extends { id: number }> {
       return;
     }
 
-    Store.set(this.getCacheKey(), await this.load());
+    await new DataLoader().load();
   }
 }

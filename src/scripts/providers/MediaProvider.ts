@@ -7,10 +7,6 @@ export class MediaProvider extends Provider<Media> {
     return 'medias';
   }
 
-  public async load() {
-    return (await (await fetch('/data/medias.json')).json()) as Media[];
-  }
-
   public async getAllMediasForPhotograph(
     photographer: Photographer
   ): Promise<Media[]> {
