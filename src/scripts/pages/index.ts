@@ -1,44 +1,70 @@
 import { PhotographersProvider } from '../providers/PhotographersProvider';
-import { HTMLElementTreeBuilder } from '../factories/HTMLElementTreeBuilder';
+import { HTMLNodeBuilder } from '../composers/HTMLNodeBuilder';
+import { Selectors } from '../enums/Selectors';
+import { InsertionStrategy } from '../enums/InsertionStrategies';
 
 async function main(): Promise<void> {
-  const main = document.querySelector<HTMLDivElement>('#app')!;
+  const main = document.querySelector<HTMLDivElement>(Selectors.MAIN)!;
   const photographers = await new PhotographersProvider().all();
-  const photographerGrid = new HTMLElementTreeBuilder(main).node('div', {
-    class: 'photographers',
-  });
+  const photographerGrid = HTMLNodeBuilder.node(
+    {
+      tag: 'div',
+      insertionStrategy: InsertionStrategy.APPEND,
+      attributes: {
+        class: 'photographers',
+      },
+    },
+    main
+  );
 
   photographers.forEach((photographer) =>
-    new HTMLElementTreeBuilder(photographerGrid).node(
-      'div',
-      { class: 'photographer' },
-      {},
-      (factory) => {
-        factory.node(
-          'a',
+    HTMLNodeBuilder.node(
+      {
+        tag: 'div',
+        insertionStrategy: InsertionStrategy.APPEND,
+        attributes: { class: 'photographer' },
+        children: [
           {
-            href: `./photographer.html?id=${photographer.id}`,
+            tag: 'a',
+            attributes: {
+              href: `./photographer.html?id=${photographer.id}`,
+            },
+            eventListeners: {
+              click: (e) => e,
+            },
+            children: [
+              {
+                tag: 'img',
+                attributes: {
+                  src: `./medias/photographers/${photographer.portrait}`,
+                },
+              },
+              { tag: 'h2', text: photographer.name },
+            ],
           },
-          { click: (e) => /*e.preventDefault()*/ e },
-          (factory) => {
-            factory.node('img', {
-              src: `./images/photographers/${photographer.portrait}`,
-            });
-            factory.textNode('h2', photographer.name);
-          }
-        );
-        factory.baseNode('div', (factory) => {
-          factory.textNode('p', photographer.country, {
-            class: 'photographer-location',
-          });
-          factory.textNode('p', photographer.tagline, {
-            class: 'photographer-tagline',
-          });
-          factory.textNode('p', `${photographer.price}€/jour`, {
-            class: 'photographer-price',
-          });
-        });
-      }
+          {
+            tag: 'div',
+            children: [
+              {
+                tag: 'p',
+                text: photographer.country,
+                attributes: { class: 'photographer-location' },
+              },
+              {
+                tag: 'p',
+                text: photographer.tagline,
+                attributes: { class: 'photographer-tagline' },
+              },
+              {
+                tag: 'p',
+                text: `${photographer.price}€/jour`,
+                attributes: { class: 'photographer-price' },
+              },
+            ],
+          },
+        ],
+      },
+      photographerGrid
     )
   );
 }
