@@ -3,7 +3,7 @@ import { Media } from '../models/Media';
 import { Photographer } from '../models/Photographer';
 
 export class MediaProvider extends Provider<Media> {
-  protected getCacheKey() {
+  public getCacheKey() {
     return 'medias';
   }
 
