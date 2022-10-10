@@ -3,14 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/src/styles/app.scss" rel="stylesheet" type="text/css" />
-    <script type="module" src="/src/scripts/pages/photographer.ts"></script>
+    
+    
     <title>Fisheye - Loading</title>
+    <script type="module" crossorigin src="/fisheye/assets/photographer.27df1f55.js"></script>
+    <link rel="modulepreload" crossorigin href="/fisheye/assets/Selectors.a25b34db.js">
+    <link rel="stylesheet" href="/fisheye/assets/Selectors.c2ab258c.css">
   </head>
   <body>
     <header>
       <a href="./index.html">
-        <img src="/images/logo.png" class="logo" alt="Fisheye Home page" />
+        <img src="/fisheye/images/logo.png" class="logo" alt="Fisheye Home page" />
       </a>
     </header>
     <main id="app">
@@ -33,10 +36,10 @@
         <header>
           <h2>Contactez-moi</h2>
           <button class="modal-close-button" aria-label="Close the modal">
-            <img src="/images/close.svg" alt="Close the modal" tabindex="-1" />
+            <img src="/fisheye/images/close.svg" alt="Close the modal" tabindex="-1" />
           </button>
         </header>
-        <form>
+        <form name="contact">
           <div class="form-control text">
             <label for="contact-form-firstname">Prénom</label>
             <input name="firstname" id="contact-form-firstname" type="text" />
