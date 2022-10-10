@@ -11,7 +11,7 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: #1a279c66;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,7 @@
   }
 
   &.shown {
-    transform: translateY(0px);
+    transform: translateY(0);
 
     &,
     & * {
