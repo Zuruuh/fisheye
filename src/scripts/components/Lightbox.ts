@@ -65,13 +65,12 @@ export class Lightbox {
           tag: 'span',
           attributes: {
             tabindex: 0,
+            class: 'focus-control',
           },
           eventListeners: {
             focus: () =>
               document
-                .querySelector<HTMLElement>(
-                  `#lightbox-${this.id} .controls button.close`
-                )!
+                .querySelector<HTMLElement>(`#lightbox-${this.id} .content *`)!
                 .focus(),
           },
         },
@@ -129,6 +128,7 @@ export class Lightbox {
           tag: 'span',
           attributes: {
             tabindex: 0,
+            class: 'focus-control',
           },
           eventListeners: {
             focus: () =>
