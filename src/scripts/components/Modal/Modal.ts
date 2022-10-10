@@ -25,6 +25,12 @@ export class Modal {
       form.addEventListener('submit', (event: SubmitEvent) => {
         event.preventDefault();
 
+        const data = Array.from(
+          new FormData(event.target as HTMLFormElement).entries()
+        )
+          .map(([key, value]) => ({ [key]: value }))
+          .reduce((previous, current) => ({ ...previous, ...current }));
+
         console.log('Form submitted!', data);
       });
     }
