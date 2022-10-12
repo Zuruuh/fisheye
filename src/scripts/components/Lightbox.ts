@@ -57,7 +57,7 @@ export class Lightbox {
       attributes: {
         id: `lightbox-${this.id}`,
         class: `lightbox lightbox-${this.id}`,
-        tabindex: '-1',
+        tabindex: 0,
       },
       eventListeners: { keydown: this.onKeyDown.bind(this) },
       children: [
@@ -149,11 +149,10 @@ export class Lightbox {
     );
 
     if (this.shown) {
-      let lightbox = this.render();
+      const lightbox = this.render();
 
       if (existingLightbox) {
         existingLightbox.replaceWith(lightbox);
-        lightbox = existingLightbox;
       } else {
         this.parent.appendChild(lightbox);
       }
