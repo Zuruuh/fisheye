@@ -28,6 +28,7 @@ async function main(): Promise<void> {
             tag: 'a',
             attributes: {
               href: `./photographer.html?id=${photographer.id}`,
+              'aria-label': photographer.name,
             },
             eventListeners: {
               click: (e) => e,
